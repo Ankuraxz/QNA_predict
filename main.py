@@ -13,26 +13,29 @@ def index():
 
 @app.get('/predict/{data}')
 def predict_cluster(data):
+    if len(data)==50:
+        
+        if type(data)==str:
+            # df = processor(data)
+            dfx=[]
+            for ix in data:
+                dfx.append(int(ix))
+    #         print(dfx)
+            df = pd.DataFrame(dfx)
+            df = df.T
+            cluster = model.predict(df)
+            result = str(int(cluster))
+            return{'Cluster': result}
 
-    if type(data)==str:
-        # df = processor(data)
-        dfx=[]
-        for ix in data:
-            dfx.append(int(ix))
-#         print(dfx)
-        df = pd.DataFrame(dfx)
-        df = df.T
-        cluster = model.predict(df)
-        result = str(int(cluster))
-        return{'Cluster': result}
-    
-    
-    elif type(data)==list:
-        df = pd.DataFrame(data)
-        df = df.T
-        cluster = model.predict(df)
-        result = str(int(cluster))
-        return{'Cluster': result}
+
+        elif type(data)==list:
+            df = pd.DataFrame(data)
+            df = df.T
+            cluster = model.predict(df)
+            result = str(int(cluster))
+            return{'Cluster': result}
+    else:
+        return {'message': 'Expected 50 Answeres, got either more or less'}
 
 
 # if __name__ == '__main__':
