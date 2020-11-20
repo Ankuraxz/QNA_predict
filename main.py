@@ -9,7 +9,7 @@ model = joblib.load("modelnew.pkl")
 
 @app.get('/')
 def index():
-    return {'message': 'Hello world__API TESTER!!! Use /predict/ to get endpoint and pass 50 answeres in format of arr[1,2,3...] or srting 1234'}
+    return {'message': 'Hello world Use /predict/ to get endpoint and pass 50 answeres in format of arr[1,2,3...] or srting 1234'}
 
 @app.get('/predict/{data}')
 def predict_cluster(data):
@@ -35,7 +35,7 @@ def predict_cluster(data):
             result = str(int(cluster))
             return{'Cluster': result}
     else:
-        return {'message': 'Expected 50 Answeres, got either more or less'}
+        return {'message': 'Expected 50 Answer, got either more or less'}
 
 
 # if __name__ == '__main__':
