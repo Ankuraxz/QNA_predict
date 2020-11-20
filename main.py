@@ -9,7 +9,7 @@ model = joblib.load("modelnew.pkl")
 
 @app.get('/')
 def index():
-    return {'message': 'Hello world_____API TESTER!!! Use /predict/ to get endpoint and pass 50 answeres in format of arr[1,2,3...] or srting 1234'}
+    return {'message': 'Hello world__API TESTER!!! Use /predict/ to get endpoint and pass 50 answeres in format of arr[1,2,3...] or srting 1234'}
 
 @app.get('/predict/{data}')
 def predict_cluster(data):
@@ -23,15 +23,16 @@ def predict_cluster(data):
         df = pd.DataFrame(dfx)
         df = df.T
         cluster = model.predict(df)
-        return(int(cluster))
+        result = str(int(cluster))
+        return('Cluster': result)
     
     
     elif type(data)==list:
         df = pd.DataFrame(data)
         df = df.T
         cluster = model.predict(df)
-        
-        return(int(cluster)) #-->testing
+        result = str(int(cluster))
+        return('Cluster': result)
 
 
 # if __name__ == '__main__':
