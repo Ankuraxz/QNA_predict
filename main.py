@@ -24,7 +24,7 @@ def predict_cluster(data):
         df = df.T
         cluster = model.predict(df)
         result = str(int(cluster))
-        return('Cluster': result)
+        return{'Cluster': result}
     
     
     elif type(data)==list:
@@ -32,7 +32,7 @@ def predict_cluster(data):
         df = df.T
         cluster = model.predict(df)
         result = str(int(cluster))
-        return('Cluster': result)
+        return{'Cluster': result}
 
 
 # if __name__ == '__main__':
