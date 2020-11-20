@@ -6,11 +6,11 @@ app = FastAPI()
 model = joblib.load("modelnew.pkl")
 
 
-@app.get('/')
+@app.get('/v1')
 def index():
     return {'message': 'Hello world_____API TESTER'}
 
-@app.get('/predict/{data}')
+@app.get('/v1/predict/{data}')
 def predict_cluster(data):
 
     if type(data)==str:
